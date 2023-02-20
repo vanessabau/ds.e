@@ -5,6 +5,7 @@ import { Select } from "@ds.e/react";
 import { Button } from "@ds.e/react";
 
 import "@ds.e/scss/lib/Button.css";
+import "@ds.e/scss/lib/global.css";
 
 const rootContainer = document.querySelector("#root") as Element;
 const root = createRoot(rootContainer);

@@ -1,4 +1,4 @@
-var fontSizes = {
+const fontSizes = {
     xxxs: "xxxs",
     // 4px
     xxs: "xxs",
@@ -15,6 +15,6 @@ var fontSizes = {
     // 48px
     xxl: "xxl",
     // 72px
-    xxxl: "xxxl"
+    xxxl: "xxxl",
 };
 export default Object.freeze(fontSizes);

@@ -11,7 +11,7 @@ export default {
     "src/atoms/Text/index.ts",
     "src/molecules/Select/index.ts",
   ],
-  output: { dir: "ilb", format: "esm", sourcemap: true, preserveModules: true },
+  output: { dir: "lib", format: "esm", sourcemap: true, preserveModules: true },
   plugins: [Ts()],
   external: ["react", "@ds.e/foundation"],
 };

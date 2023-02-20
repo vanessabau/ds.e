@@ -4,10 +4,13 @@
   "main": "lib/index.js",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "build": "tsc",
     "dev": "yarn build --watch"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

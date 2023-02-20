@@ -1,4 +1,4 @@
-var spaces = {
+const spaces = {
     none: "none",
     xxxs: "xxxs",
     // 4px
@@ -16,6 +16,6 @@ var spaces = {
     // 48px
     xxl: "xxl",
     // 72px
-    xxxl: "xxxl"
+    xxxl: "xxxl",
 };
 export default Object.freeze(spaces);

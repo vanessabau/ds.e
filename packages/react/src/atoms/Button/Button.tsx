@@ -5,7 +5,9 @@ export interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ label }) => {
-  return <div>I am a {label || "label"}</div>;
+  return (
+    <button className="dse-button__container">I am a {label || "label"}</button>
+  );
 };
 
 export default Button;
