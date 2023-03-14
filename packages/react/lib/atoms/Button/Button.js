@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({ label }) => {
-    return (React.createElement("button", { className: "dse-button__container" },
+    return (React.createElement("button", { className: "dse-button__container", id: "dse-button__container" },
         "I am a ",
         label || "label"));
 };

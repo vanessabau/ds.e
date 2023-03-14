@@ -12,17 +12,26 @@
  =                   Foundations               =
  =============================================*/
 
-@import "foundation/all";
+// @import "foundation/all";
 
 /*==============================================
   =                   Base                      =
   =============================================*/
 
-@import "base/reset";
-@import "base/root";
+// @import "base/reset";
+// @import "base/root";
 
-body {
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  font-weight: $body-font-weight;
+// body {
+//   font-family: $body-font-family;
+//   font-size: $body-font-size;
+//   font-weight: $body-font-weight;
+// }
+
+// @import "atoms/Button.scss";
+button {
+  display: flex;
+  background: red;
+  color: pink;
+  border: none;
+  padding: 10px;
 }

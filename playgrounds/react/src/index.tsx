@@ -4,8 +4,9 @@ import { createRoot } from "react-dom/client";
 import { Select } from "@ds.e/react";
 import { Button } from "@ds.e/react";
 
-import "@ds.e/scss/lib/Button.css";
-import "@ds.e/scss/lib/global.css";
+// import "@ds.e/scss/lib/Button.css";
+// import "@ds.e/scss/lib/global.css";
+//import "@ds.e/scss/lib/button-new.css";
 
 const rootContainer = document.querySelector("#root") as Element;
 const root = createRoot(rootContainer);
@@ -20,7 +21,7 @@ root.render(
   <div>
     <Button label="hello" />
     <Select options={options} />
-    <p>this is some text</p>
+    <p style={{ color: "red" }}>this is some text</p>
   </div>
 );
 
