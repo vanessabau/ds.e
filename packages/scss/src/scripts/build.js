@@ -1,11 +1,11 @@
 const Fs = require("fs");
 const Path = require("path");
-const Sass = require("node-sass");
+const Sass = require("sass");
 
 const getComponents = () => {
   let allComponents = [];
 
-  const types = ["atoms"];
+  const types = ["atoms", "molecules"];
 
   types.forEach((type) => {
     const allFiles = Fs.readdirSync(`src/${type}`).map((file) => ({
