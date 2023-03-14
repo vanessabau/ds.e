@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import { Select } from "@ds.e/react";
-import { Button } from "@ds.e/react";
+import { Button, Color } from "@ds.e/react";
 
 // import "@ds.e/scss/lib/Button.css";
 // import "@ds.e/scss/lib/global.css";
@@ -19,6 +19,7 @@ const options = [
 
 root.render(
   <div>
+    <Color hexCode="#000" width="1rem" height="1rem" />
     <Button label="hello" />
     <Select options={options} />
     <p style={{ color: "red" }}>this is some text</p>

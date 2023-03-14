@@ -19,7 +19,9 @@ const Color: React.FC<ColorProps> = ({
       style={{
         backgroundColor: hexCode,
       }}
-    ></div>
+    >
+      I am Color
+    </div>
   );
 };
 

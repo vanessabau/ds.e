@@ -5,6 +5,7 @@ const packageJson = require("./package.json");
 export default {
   input: [
     "src/index.ts",
+    "src/atoms/Color/index.ts",
     "src/atoms/Button/index.ts",
     "src/atoms/NewButton/index.ts",
     "src/atoms/Margin/index.ts",

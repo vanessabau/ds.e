@@ -29023,7 +29023,7 @@ const Color = ({
     style: {
       backgroundColor: hexCode
     }
-  });
+  }, "I am Color");
 };
 exports.default = Color;
 },{"react":"../../../node_modules/react/index.js","@ds.e/foundation":"../../../node_modules/@ds.e/foundation/lib/index.js"}],"../../../node_modules/@ds.e/react/lib/atoms/Margin/Margin.js":[function(require,module,exports) {
@@ -29217,7 +29217,11 @@ var options = [{
   label: "Option 3",
   value: "option-3"
 }];
-root.render(_react.default.createElement("div", null, _react.default.createElement(_react2.Button, {
+root.render(_react.default.createElement("div", null, _react.default.createElement(_react2.Color, {
+  hexCode: "#000",
+  width: "1rem",
+  height: "1rem"
+}), _react.default.createElement(_react2.Button, {
   label: "hello"
 }), _react.default.createElement(_react2.Select, {
   options: options
@@ -29259,7 +29263,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55214" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63747" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
