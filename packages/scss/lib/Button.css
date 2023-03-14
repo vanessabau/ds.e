@@ -103,6 +103,10 @@
 /*=============================================
 =            Head font weights                =
 =============================================*/
+body {
+  margin: 10px;
+}
+
 button {
   display: flex;
   background: red;

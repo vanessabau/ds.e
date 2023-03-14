@@ -4,5 +4,6 @@ import Color from "./atoms/Color/Color";
 import Margin from "./atoms/Margin";
 import Text from "./atoms/Text";
 import Select from "./molecules/Select";
+import Spacing from "./foundation/Spacing";
 
-export { Button, NewButton, Color, Margin, Text, Select };
+export { Button, NewButton, Color, Margin, Text, Select, Spacing };

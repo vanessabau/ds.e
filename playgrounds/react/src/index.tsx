@@ -6,7 +6,7 @@ import { Button, Color } from "@ds.e/react";
 
 // import "@ds.e/scss/lib/Button.css";
 import "@ds.e/scss/lib/global.css";
-//import "@ds.e/scss/lib/button-new.css";
+import "@ds.e/scss/lib/Utilities.css";
 
 const rootContainer = document.querySelector("#root") as Element;
 const root = createRoot(rootContainer);
@@ -19,7 +19,7 @@ const options = [
 
 root.render(
   <div>
-    <Color hexCode="#000" width="1rem" height="1rem" />
+    <Color hexCode="#000" width="lg" height="lg" />
     <Button label="hello" />
     <Select options={options} />
     <p style={{ color: "red" }}>this is some text</p>
