@@ -16,5 +16,6 @@ const fontSizes = {
     xxl: "xxl",
     // 72px
     xxxl: "xxxl",
+    // 96px
 };
 export default Object.freeze(fontSizes);
