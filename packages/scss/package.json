@@ -20,12 +20,13 @@
     "src"
   ],
   "devDependencies": {
-    "husky": "^8.0.3",
+    "husky": "^4.3.8",
     "lint-staged": "^13.1.0",
-    "node-sass": "^8.0.0",
-    "nodemon": "^2.0.20",
-    "sass": "^1.57.1",
+    "node-sass": "^7.0.3",
+    "nodemon": "^2.0.21",
+    "postcss": "^8.4.16",
     "prettier": "^2.8.3",
+    "sass": "^1.57.1",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-sass-guidelines": "^9.0.1",
