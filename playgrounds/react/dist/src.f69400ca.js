@@ -29099,6 +29099,25 @@ var _Text = _interopRequireDefault(require("../../atoms/Text/Text.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+const getNextOptionIndex = (currentIndex, options) => {
+  console.log(currentIndex);
+  if (currentIndex === null) {
+    return 0;
+  }
+  if (currentIndex === options.length - 1) {
+    return 0;
+  }
+  return currentIndex + 1;
+};
+const getPreviousOptionIndex = (currentIndex, options) => {
+  if (currentIndex === null) {
+    return options.length - 1;
+  }
+  if (currentIndex === 0) {
+    return 0;
+  }
+  return currentIndex - 1;
+};
 const Select = ({
   options = [],
   label = "Please select an option",
@@ -29107,7 +29126,9 @@ const Select = ({
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
+  const [highlightedIndex, setHighlightedIndex] = (0, _react.useState)(null);
   const labelRef = (0, _react.useRef)(null);
+  const [optionRefs, setOptionRefs] = (0, _react.useState)([]);
   const [overlayTop, setOverlayTop] = (0, _react.useState)(0);
   const handleOptionSelected = (option, optionIndex) => {
     setIsOpen(prev => !prev);
@@ -29125,12 +29146,54 @@ const Select = ({
   if (selectedIndex !== null) {
     selectedOption = options[selectedIndex];
   }
+  const highlightOption = optionIndex => {
+    setHighlightedIndex(optionIndex);
+  };
+  const onButtonKeyDown = event => {
+    event.preventDefault();
+    console.log(event);
+    // space is not working
+    if (event.key === "Enter" || event.key === "Space" || event.key === "ArrowDown") setIsOpen(true);
+    // Set focus on list item
+    highlightOption(0);
+  };
+  (0, _react.useEffect)(() => {
+    setOptionRefs(options.map(_ => (0, _react.createRef)()));
+  }, [options.length]);
+  (0, _react.useEffect)(() => {
+    if (highlightedIndex !== null && isOpen) {
+      const ref = optionRefs[highlightedIndex];
+      if (ref && ref.current) {
+        ref.current.focus();
+      }
+    }
+  }, [isOpen, highlightedIndex]);
+  const onOptionKeyDown = event => {
+    console.log(event);
+    if (event.key === "Escape") {
+      setIsOpen(false);
+      return;
+    }
+    if (event.key === "ArrowDown") {
+      highlightOption(getNextOptionIndex(highlightedIndex, options));
+    }
+    if (event.key === "ArrowUp") {
+      highlightOption(getPreviousOptionIndex(highlightedIndex, options));
+    }
+    if (event.key === "Enter") {
+      handleOptionSelected(options[highlightedIndex], highlightedIndex);
+    }
+  };
   return _react.default.createElement("div", {
     className: "dse-select"
   }, _react.default.createElement("button", {
     ref: labelRef,
     className: "dse-select__label",
-    onClick: () => onLabelClick()
+    onClick: () => onLabelClick(),
+    "aria-haspopup": true,
+    "aria-expanded": isOpen ? true : undefined,
+    "aria-controls": "dse-select-list",
+    onKeyDown: onButtonKeyDown
   }, _react.default.createElement(_Text.default, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
     className: `dse-select__caret ${isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"}`,
     width: "1rem",
@@ -29145,22 +29208,32 @@ const Select = ({
     strokeLinejoin: "round",
     d: "M19.5 8.25l-7.5 7.5-7.5-7.5"
   }))), isOpen && _react.default.createElement("ul", {
+    id: "dse-select-list",
+    role: "menu",
     style: {
       top: overlayTop
     },
     className: "dse-select__overlay"
   }, options.map((option, index) => {
+    // selectedIndex is the same as optionIndex
     const isSelected = index === selectedIndex;
+    const isHighlighted = highlightedIndex === selectedIndex;
+    const ref = optionRefs[index];
     // const renderOptionProps = {
     //   option,
     //   isSelected,
     //   getOptionRecommendedProps: (overrideProps = {}) => {
     //     return {
-    //       className: `dse-select__option ${
-    //         isSelected ? "dse-select__option--selected" : ""
-    //       }`,
+    //       ref,
+    //       onKeyDown: onOptionKeyDown,
+    //       tabIndex: isHighlighted ? -1 : 0,
+    //       onMouseEnter: () => highlightOption(selectedIndex),
+    //       onMouseLeave: () => highlightOption(null),
+    //       className: `dse-select__option
+    //      ${isSelected ? "dse-select__option--selected" : ""}
+    //      ${isHighlighted ? "dse-select__option--highlighted" : ""}`,
     //       key: option.value,
-    //        onClick: handleOptionSelected(option, index),
+    //       onClick: handleOptionSelected(option, index),
     //       ...overrideProps,
     //     };
     //   },
@@ -29169,11 +29242,19 @@ const Select = ({
     //   return renderOption(renderOptionProps);
     // }
     return _react.default.createElement("li", {
+      ref: ref,
+      role: "menuitemradio",
+      "aria-label": option.label,
+      "aria-checked": isSelected ? true : undefined,
       className: `dse-select__option ${isSelected ? "dse-select__option--selected" : ""}`,
       key: option.value,
       onClick: () => {
         handleOptionSelected(option, index);
-      }
+      },
+      onKeyDown: onOptionKeyDown,
+      tabIndex: isHighlighted ? -1 : 0,
+      onMouseEnter: () => highlightOption(selectedIndex),
+      onMouseLeave: () => highlightOption(null)
     }, _react.default.createElement(_Text.default, null, option.label), isSelected ? _react.default.createElement("svg", {
       width: "1rem",
       height: "1rem",
@@ -29379,7 +29460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57564" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61976" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
