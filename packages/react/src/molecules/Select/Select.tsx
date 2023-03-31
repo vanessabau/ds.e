@@ -17,12 +17,14 @@ const Select: React.FC<SelectProps> = ({
   onOptionSelected,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
   const labelRef = useRef<HTMLButtonElement>(null);
   const [overlayTop, setOverlayTop] = useState<number>(0);
 
   const handleOptionSelected = (option: SelectOption, optionIndex: number) => {
     setIsOpen((prev) => !prev);
     onOptionSelected?.(option, optionIndex);
+    setSelectedIndex(optionIndex);
   };
 
   const onLabelClick = () => {
@@ -61,9 +63,12 @@ const Select: React.FC<SelectProps> = ({
       {isOpen && (
         <ul style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, index) => {
+            const isSelected = index === selectedIndex;
             return (
               <li
-                className="dse-select__option"
+                className={`dse-select__option ${
+                  isSelected ? "dse-select__option-selected" : ""
+                }`}
                 key={option.value}
                 onClick={() => {
                   handleOptionSelected(option, index);
