@@ -29095,6 +29095,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
+var _Text = _interopRequireDefault(require("../../atoms/Text/Text.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 const Select = ({
@@ -29103,11 +29105,13 @@ const Select = ({
   onOptionSelected
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
+  const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
   const labelRef = (0, _react.useRef)(null);
   const [overlayTop, setOverlayTop] = (0, _react.useState)(0);
   const handleOptionSelected = (option, optionIndex) => {
     setIsOpen(prev => !prev);
     onOptionSelected?.(option, optionIndex);
+    setSelectedIndex(optionIndex);
   };
   const onLabelClick = () => {
     setIsOpen(prev => !prev);
@@ -29115,13 +29119,17 @@ const Select = ({
   (0, _react.useEffect)(() => {
     setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
   }, [labelRef.current?.offsetHeight]);
+  let selectedOption = null;
+  if (selectedIndex !== null) {
+    selectedOption = options[selectedIndex];
+  }
   return _react.default.createElement("div", {
     className: "dse-select"
   }, _react.default.createElement("button", {
     ref: labelRef,
     className: "dse-select__label",
     onClick: () => onLabelClick()
-  }, _react.default.createElement("span", null, label), _react.default.createElement("svg", {
+  }, _react.default.createElement(_Text.default, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
     width: "1rem",
     height: "1rem",
     xmlns: "http://www.w3.org/2000/svg",
@@ -29139,17 +29147,31 @@ const Select = ({
     },
     className: "dse-select__overlay"
   }, options.map((option, index) => {
+    const isSelected = index === selectedIndex;
     return _react.default.createElement("li", {
-      className: "dse-select__option",
+      className: `dse-select__option ${isSelected ? "dse-select__option--selected" : ""}`,
       key: option.value,
       onClick: () => {
         handleOptionSelected(option, index);
       }
-    }, option.label);
+    }, _react.default.createElement(_Text.default, null, option.label), isSelected ? _react.default.createElement("svg", {
+      width: "1rem",
+      height: "1rem",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 1.5,
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg",
+      "aria-hidden": "true"
+    }, _react.default.createElement("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      d: "M4.5 12.75l6 6 9-13.5"
+    })) : null);
   })));
 };
 exports.default = Select;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@ds.e/react/lib/index.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","../../atoms/Text/Text.js":"../../../node_modules/@ds.e/react/lib/atoms/Text/Text.js"}],"../../../node_modules/@ds.e/react/lib/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

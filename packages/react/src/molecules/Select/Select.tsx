@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Text from "../../atoms/Text";
 
 interface SelectOption {
   label: string;
@@ -35,6 +36,12 @@ const Select: React.FC<SelectProps> = ({
     setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
   }, [labelRef.current?.offsetHeight]);
 
+  let selectedOption = null;
+
+  if (selectedIndex !== null) {
+    selectedOption = options[selectedIndex];
+  }
+
   return (
     <div className="dse-select">
       <button
@@ -42,7 +49,7 @@ const Select: React.FC<SelectProps> = ({
         className="dse-select__label"
         onClick={() => onLabelClick()}
       >
-        <span>{label}</span>
+        <Text>{selectedOption === null ? label : selectedOption.label}</Text>
         <svg
           width="1rem"
           height="1rem"
@@ -67,14 +74,32 @@ const Select: React.FC<SelectProps> = ({
             return (
               <li
                 className={`dse-select__option ${
-                  isSelected ? "dse-select__option-selected" : ""
+                  isSelected ? "dse-select__option--selected" : ""
                 }`}
                 key={option.value}
                 onClick={() => {
                   handleOptionSelected(option, index);
                 }}
               >
-                {option.label}
+                <Text>{option.label}</Text>
+                {isSelected ? (
+                  <svg
+                    width="1rem"
+                    height="1rem"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
+                ) : null}
               </li>
             );
           })}
