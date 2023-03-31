@@ -51,6 +51,9 @@ const Select: React.FC<SelectProps> = ({
       >
         <Text>{selectedOption === null ? label : selectedOption.label}</Text>
         <svg
+          className={`dse-select__caret ${
+            isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"
+          }`}
           width="1rem"
           height="1rem"
           xmlns="http://www.w3.org/2000/svg"

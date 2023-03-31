@@ -29130,6 +29130,7 @@ const Select = ({
     className: "dse-select__label",
     onClick: () => onLabelClick()
   }, _react.default.createElement(_Text.default, null, selectedOption === null ? label : selectedOption.label), _react.default.createElement("svg", {
+    className: `dse-select__caret ${isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"}`,
     width: "1rem",
     height: "1rem",
     xmlns: "http://www.w3.org/2000/svg",
@@ -29359,7 +29360,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49274" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50536" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
