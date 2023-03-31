@@ -20,7 +20,7 @@ const Select = ({ options = [], label = "Please select an option", onOptionSelec
             React.createElement("svg", { width: "1rem", height: "1rem", xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor" },
                 React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M19.5 8.25l-7.5 7.5-7.5-7.5" }))),
         isOpen && (React.createElement("ul", { style: { top: overlayTop }, className: "dse-select__overlay" }, options.map((option, index) => {
-            return (React.createElement("li", { key: option.value, onClick: () => {
+            return (React.createElement("li", { className: "dse-select__option", key: option.value, onClick: () => {
                     handleOptionSelected(option, index);
                 } }, option.label));
         })))));
