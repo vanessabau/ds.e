@@ -29148,27 +29148,7 @@ const Select = ({
   })));
 };
 exports.default = Select;
-},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@ds.e/react/lib/foundation/Spacing.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-const spaces = {
-  xxxs: "xxxs",
-  xxs: "xxs",
-  xs: "xs",
-  sm: "sm",
-  md: "md",
-  lg: "lg",
-  xl: "xl",
-  xxl: "xxl",
-  xxxl: "xxxl"
-};
-var Spacing = Object.freeze(spaces);
-exports.default = Spacing;
-},{}],"../../../node_modules/@ds.e/react/lib/index.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js"}],"../../../node_modules/@ds.e/react/lib/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29204,12 +29184,6 @@ Object.defineProperty(exports, "Select", {
     return _Select.default;
   }
 });
-Object.defineProperty(exports, "Spacing", {
-  enumerable: true,
-  get: function () {
-    return _Spacing.default;
-  }
-});
 Object.defineProperty(exports, "Text", {
   enumerable: true,
   get: function () {
@@ -29222,9 +29196,8 @@ var _Color = _interopRequireDefault(require("./atoms/Color/Color.js"));
 var _Margin = _interopRequireDefault(require("./atoms/Margin/Margin.js"));
 var _Text = _interopRequireDefault(require("./atoms/Text/Text.js"));
 var _Select = _interopRequireDefault(require("./molecules/Select/Select.js"));
-var _Spacing = _interopRequireDefault(require("./foundation/Spacing.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./atoms/Button/Button.js":"../../../node_modules/@ds.e/react/lib/atoms/Button/Button.js","./atoms/NewButton/NewButton.js":"../../../node_modules/@ds.e/react/lib/atoms/NewButton/NewButton.js","./atoms/Color/Color.js":"../../../node_modules/@ds.e/react/lib/atoms/Color/Color.js","./atoms/Margin/Margin.js":"../../../node_modules/@ds.e/react/lib/atoms/Margin/Margin.js","./atoms/Text/Text.js":"../../../node_modules/@ds.e/react/lib/atoms/Text/Text.js","./molecules/Select/Select.js":"../../../node_modules/@ds.e/react/lib/molecules/Select/Select.js","./foundation/Spacing.js":"../../../node_modules/@ds.e/react/lib/foundation/Spacing.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./atoms/Button/Button.js":"../../../node_modules/@ds.e/react/lib/atoms/Button/Button.js","./atoms/NewButton/NewButton.js":"../../../node_modules/@ds.e/react/lib/atoms/NewButton/NewButton.js","./atoms/Color/Color.js":"../../../node_modules/@ds.e/react/lib/atoms/Color/Color.js","./atoms/Margin/Margin.js":"../../../node_modules/@ds.e/react/lib/atoms/Margin/Margin.js","./atoms/Text/Text.js":"../../../node_modules/@ds.e/react/lib/atoms/Text/Text.js","./molecules/Select/Select.js":"../../../node_modules/@ds.e/react/lib/molecules/Select/Select.js"}],"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -29287,6 +29260,12 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/@ds.e/scss/lib/Select.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -29295,6 +29274,7 @@ var _client = require("react-dom/client");
 var _react2 = require("@ds.e/react");
 require("@ds.e/scss/lib/global.css");
 require("@ds.e/scss/lib/Utilities.css");
+require("@ds.e/scss/lib/Select.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // import "@ds.e/scss/lib/Button.css";
 
@@ -29331,7 +29311,7 @@ root.render(_react.default.createElement("div", null, _react.default.createEleme
 //   <Button label="Example Button"></Button>,
 //   document.querySelector("#root")
 // );
-},{"react":"../../../node_modules/react/index.js","react-dom/client":"../../../node_modules/react-dom/client.js","@ds.e/react":"../../../node_modules/@ds.e/react/lib/index.js","@ds.e/scss/lib/global.css":"../../../node_modules/@ds.e/scss/lib/global.css","@ds.e/scss/lib/Utilities.css":"../../../node_modules/@ds.e/scss/lib/Utilities.css"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","react-dom/client":"../../../node_modules/react-dom/client.js","@ds.e/react":"../../../node_modules/@ds.e/react/lib/index.js","@ds.e/scss/lib/global.css":"../../../node_modules/@ds.e/scss/lib/global.css","@ds.e/scss/lib/Utilities.css":"../../../node_modules/@ds.e/scss/lib/Utilities.css","@ds.e/scss/lib/Select.css":"../../../node_modules/@ds.e/scss/lib/Select.css"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29356,7 +29336,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53971" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62149" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

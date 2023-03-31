@@ -7,7 +7,7 @@ import { Button, Color } from "@ds.e/react";
 // import "@ds.e/scss/lib/Button.css";
 import "@ds.e/scss/lib/global.css";
 import "@ds.e/scss/lib/Utilities.css";
-
+import "@ds.e/scss/lib/Select.css";
 const rootContainer = document.querySelector("#root") as Element;
 const root = createRoot(rootContainer);
 
