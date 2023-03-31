@@ -63,6 +63,7 @@ const Select: React.FC<SelectProps> = ({
           {options.map((option, index) => {
             return (
               <li
+                className="dse-select__option"
                 key={option.value}
                 onClick={() => {
                   handleOptionSelected(option, index);
