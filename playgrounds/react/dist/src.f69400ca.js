@@ -29103,6 +29103,7 @@ const Select = ({
   options = [],
   label = "Please select an option",
   onOptionSelected
+  //renderOption,
 }) => {
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedIndex, setSelectedIndex] = (0, _react.useState)(null);
@@ -29112,6 +29113,7 @@ const Select = ({
     setIsOpen(prev => !prev);
     onOptionSelected?.(option, optionIndex);
     setSelectedIndex(optionIndex);
+    console.log(selectedIndex);
   };
   const onLabelClick = () => {
     setIsOpen(prev => !prev);
@@ -29149,6 +29151,23 @@ const Select = ({
     className: "dse-select__overlay"
   }, options.map((option, index) => {
     const isSelected = index === selectedIndex;
+    // const renderOptionProps = {
+    //   option,
+    //   isSelected,
+    //   getOptionRecommendedProps: (overrideProps = {}) => {
+    //     return {
+    //       className: `dse-select__option ${
+    //         isSelected ? "dse-select__option--selected" : ""
+    //       }`,
+    //       key: option.value,
+    //        onClick: handleOptionSelected(option, index),
+    //       ...overrideProps,
+    //     };
+    //   },
+    // };
+    // if (renderOption) {
+    //   return renderOption(renderOptionProps);
+    // }
     return _react.default.createElement("li", {
       className: `dse-select__option ${isSelected ? "dse-select__option--selected" : ""}`,
       key: option.value,
@@ -29360,7 +29379,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57564" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

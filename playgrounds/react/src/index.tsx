@@ -22,7 +22,12 @@ root.render(
   <div>
     <Color hexCode="#000" width="lg" height="lg" />
     <Button label="hello" />
-    <Select options={options} />
+    <Select
+      options={options}
+      // renderOption={({ option, getOptionRecommendedProps }) => (
+      //   <p {...getOptionRecommendedProps()}>{option.label}</p>
+      // )}
+    />
     <p style={{ color: "red" }}>this is some text</p>
   </div>
 );

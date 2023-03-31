@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Text from '../../atoms/Text/Text.js';
 
-const Select = ({ options = [], label = "Please select an option", onOptionSelected, }) => {
+const Select = ({ options = [], label = "Please select an option", onOptionSelected,
+//renderOption,
+ }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
     const labelRef = useRef(null);
@@ -10,6 +12,7 @@ const Select = ({ options = [], label = "Please select an option", onOptionSelec
         setIsOpen((prev) => !prev);
         onOptionSelected?.(option, optionIndex);
         setSelectedIndex(optionIndex);
+        console.log(selectedIndex);
     };
     const onLabelClick = () => {
         setIsOpen((prev) => !prev);
@@ -28,6 +31,23 @@ const Select = ({ options = [], label = "Please select an option", onOptionSelec
                 React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M19.5 8.25l-7.5 7.5-7.5-7.5" }))),
         isOpen && (React.createElement("ul", { style: { top: overlayTop }, className: "dse-select__overlay" }, options.map((option, index) => {
             const isSelected = index === selectedIndex;
+            // const renderOptionProps = {
+            //   option,
+            //   isSelected,
+            //   getOptionRecommendedProps: (overrideProps = {}) => {
+            //     return {
+            //       className: `dse-select__option ${
+            //         isSelected ? "dse-select__option--selected" : ""
+            //       }`,
+            //       key: option.value,
+            //        onClick: handleOptionSelected(option, index),
+            //       ...overrideProps,
+            //     };
+            //   },
+            // };
+            // if (renderOption) {
+            //   return renderOption(renderOptionProps);
+            // }
             return (React.createElement("li", { className: `dse-select__option ${isSelected ? "dse-select__option--selected" : ""}`, key: option.value, onClick: () => {
                     handleOptionSelected(option, index);
                 } },
