@@ -146,6 +146,7 @@ const Select: React.FC<SelectProps> = ({
     <div className="dse-select">
       <button
         ref={labelRef}
+        data-testid="DseSelectButton"
         className="dse-select__label"
         onClick={() => onLabelClick()}
         aria-haspopup={true}
