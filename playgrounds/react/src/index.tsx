@@ -20,7 +20,6 @@ const options = [
 
 root.render(
   <div>
-    <Color hexCode="#000" width="lg" height="lg" />
     <Button label="hello" />
     <Select
       options={options}
@@ -28,6 +27,7 @@ root.render(
       //   <p {...getOptionRecommendedProps()}>{option.label}</p>
       // )}
     />
+    <Color hexCode="#000" width="lg" height="lg" />
     <p style={{ color: "red" }}>this is some text</p>
   </div>
 );
