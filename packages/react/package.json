@@ -25,6 +25,7 @@
     "@types/jest": "^29.5.0",
     "@types/react": "^18.0.28",
     "babel-loader": "^8.3.0",
+    "chromatic": "^6.17.2",
     "css-loader": "^6.5.1",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
@@ -41,9 +42,12 @@
     "test": "jest --verbose",
     "test:watch": "yarn test --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "jest": "^29.5.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "@ds.e/react@1.0.0"
 }

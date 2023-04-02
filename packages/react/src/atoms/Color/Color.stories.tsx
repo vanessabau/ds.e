@@ -10,8 +10,8 @@ export default {
   component: Color,
   args: {
     hexCode: "pink",
-    height: [],
-    width: [],
+    height: ["xl"],
+    width: ["xl"],
   },
 };
 
