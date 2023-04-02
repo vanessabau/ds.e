@@ -4,32 +4,33 @@ import Select from "./Select";
 // css
 import "@ds.e/scss/lib/Select.css";
 
-const options = [
-  {
-    label: "Strict Black",
-    value: "strict-black",
-  },
-  {
-    label: "Heavenly Green",
-    value: "heavenly-green",
-  },
-  {
-    label: "Sweet Pink",
-    value: "pink",
-  },
-];
-
 // Group components by adding to the title
 export default {
   title: "Molecules | Select",
-  component: Select,
+  args: {
+    options: [
+      {
+        label: "Strict Black",
+        value: "strict-black",
+      },
+      {
+        label: "Heavenly Green",
+        value: "heavenly-green",
+      },
+      {
+        label: "Sweet Pink",
+        value: "pink",
+      },
+    ],
+    label: "Please select a color",
+  },
 };
 
-export const Common = () => <Select options={options} />;
+export const Common = (args: any) => <Select {...args} />;
 
-export const CustomLabel = () => (
-  <Select options={options} label="Select a Color" />
-);
+// export const CustomLabel = () => (
+//   <Select options={options} label="Select a Color" />
+// );
 
 // Provide Developer-helpful variants, look at the component interface to reflect variants
 
