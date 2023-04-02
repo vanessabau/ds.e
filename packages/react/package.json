@@ -43,7 +43,7 @@
     "test:watch": "yarn test --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "chromatic --project-token=\"$CHROMATIC_PROJECT_TOKEN\""
   },
   "dependencies": {
     "jest": "^29.5.0"
