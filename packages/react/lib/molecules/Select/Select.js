@@ -87,7 +87,7 @@ const Select = ({ options = [], label = "Please select an option", onOptionSelec
         }
     };
     return (React.createElement("div", { className: "dse-select" },
-        React.createElement("button", { ref: labelRef, className: "dse-select__label", onClick: () => onLabelClick(), "aria-haspopup": true, "aria-expanded": isOpen ? true : undefined, "aria-controls": "dse-select-list", onKeyDown: onButtonKeyDown },
+        React.createElement("button", { ref: labelRef, "data-testid": "DseSelectButton", className: "dse-select__label", onClick: () => onLabelClick(), "aria-haspopup": true, "aria-expanded": isOpen ? true : undefined, "aria-controls": "dse-select-list", onKeyDown: onButtonKeyDown },
             React.createElement(Text, null, selectedOption === null ? label : selectedOption.label),
             React.createElement("svg", { className: `dse-select__caret ${isOpen ? "dse-select__caret--open" : "dse-select__caret--closed"}`, width: "1rem", height: "1rem", xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor" },
                 React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M19.5 8.25l-7.5 7.5-7.5-7.5" }))),
